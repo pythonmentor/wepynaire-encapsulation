@@ -52,7 +52,7 @@ class Task:
         energy (int): Le niveau d'énergie requis pour la tâche (1 = faible, 5 = élevé).
     """
 
-    def __init__(self, description, status, assignee, categories, deadline=None, difficulty=1, priority=1, energy=1):
+    def __init__(self, description, status, assignee, categories, deadline=None, difficulty=1, priority=1, energy=1, project=None):
         self.__description = description   # attribut privé
         self.__status = status   # attribut privé
         self.__assignee = assignee   # attribut privé
@@ -61,6 +61,8 @@ class Task:
         self.__difficulty = difficulty   # attribut privé
         self.__priority = priority   # attribut privé
         self.__energy = energy   # attribut privé
+        self.__project = project   # attribut privé pour le projet
+        self.__notes = []   # attribut privé pour les notes
 
     def get_description(self):
         """Retourne la description de la tâche."""
@@ -125,6 +127,16 @@ class Task:
     def set_energy(self, energy):
         """Modifie le niveau d'énergie requis pour la tâche"""
         self.__energy = energy
+        
+    def get_project(self):
+        return self.__project
+
+    def set_project(self, project):
+        self.__project = project
+
+    def add_note(self, note):
+        self.__notes.append(note)
+        note.set_task(self)
 
 
 class Note:
@@ -136,10 +148,12 @@ class Note:
         author (User): L'auteur de la note.
     """
 
-    def __init__(self, title, content, author):
+    def __init__(self, title, content, author, project=None, task=None):
         self.__title = title   # attribut privé
         self.__content = content   # attribut privé
         self.__author = author   # attribut privé
+        self.__project = project   # attribut privé
+        self.__task = task   # attribut privé
 
     def get_title(self):
         """Retourne le titre de la note."""
