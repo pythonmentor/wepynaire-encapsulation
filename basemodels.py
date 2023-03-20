@@ -24,10 +24,15 @@ class User:
 
 
 class Task:
-    def __init__(self, description, status, assignee):
+    def __init__(self, description, status, assignee, categories, deadline=None, difficulty=1, priority=1, energy=1):
         self.__description = description   # attribut privé
         self.__status = status   # attribut privé
         self.__assignee = assignee   # attribut privé
+        self.__categories = categories   # attribut privé
+        self.__deadline = deadline   # attribut privé
+        self.__difficulty = difficulty   # attribut privé
+        self.__priority = priority   # attribut privé
+        self.__energy = energy   # attribut privé
 
     def get_description(self):   # méthode d'instance publique
         return self.__description
@@ -46,6 +51,36 @@ class Task:
 
     def set_assignee(self, assignee):   # méthode d'instance publique
         self.__assignee = assignee
+
+    def get_categories(self):   # méthode d'instance publique
+        return self.__categories
+
+    def set_categories(self, categories):   # méthode d'instance publique
+        self.__categories = categories
+
+    def get_deadline(self):   # méthode d'instance publique
+        return self.__deadline
+
+    def set_deadline(self, deadline):   # méthode d'instance publique
+        self.__deadline = deadline
+
+    def get_difficulty(self):   # méthode d'instance publique
+        return self.__difficulty
+
+    def set_difficulty(self, difficulty):   # méthode d'instance publique
+        self.__difficulty = difficulty
+
+    def get_priority(self):   # méthode d'instance publique
+        return self.__priority
+
+    def set_priority(self, priority):   # méthode d'instance publique
+        self.__priority = priority
+
+    def get_energy(self):   # méthode d'instance publique
+        return self.__energy
+
+    def set_energy(self, energy):   # méthode d'instance publique
+        self.__energy = energy
 
 
 class Note:
@@ -80,13 +115,29 @@ class Project:
         self.__notes = []   # attribut privé
         self.__users = []   # attribut privé
 
-    def add_user(self, user):   # méthode d'instance publique
-        self.__users.append(user)
-
-    def remove_user(self, user):   # méthode d'instance publique
-        self.__users.remove(user)
-
-    def get_users(self):   # méthode d'instance publique
-        return self.__users
-
     def add_task(self, task):   # méthode d'instance publique
+        self.__tasks.append(task)
+
+    def remove_task(self, task):   # méthode d'instance publique
+        self.__tasks.remove(task)
+
+    def get_tasks(self):   # méthode d'instance publique
+        return self.__tasks
+
+    def add_note(self, note):   # méthode d'instance publique
+        self.__notes.append(note)
+
+    def remove_note(self, note):   # méthode d'instance publique
+        self.__notes.remove(note)
+
+    def get_notes(self):   # méthode d'instance publique
+        return self.__notes
+
+    def generate_report(self):  
+        print(f"Report for project '{self.__name}':")
+        for task in self.get_tasks():
+            print(f"- {task.get_description()}: {task.get_status()}")
+
+        print(f"\nNotes for project '{self.__name}':")
+        for note in self.get_notes():
+            print(f"- {note.get_title()}: {note.get_content()}")
