@@ -35,7 +35,21 @@ class User:
     def set_password(self, password):
         """Modifie le mot de passe de l'utilisateur."""
         self.__password = password
-
+        
+    def save(self):
+        ...
+        
+    @classmethod
+    def get_by_name(cls, name):
+        ...
+        
+    @classmethod
+    def get_by_email(cls, email):
+        ...
+        
+    @classmethod
+    def all(cls):
+        ...
 
 
 class Task:
@@ -137,6 +151,29 @@ class Task:
     def add_note(self, note):
         self.__notes.append(note)
         note.set_task(self)
+        
+    def save(self):
+        ...
+        
+    @classmethod
+    def search_in_description(self, search):
+        ...
+        
+    @classmethod
+    def get_by_prioriy(cls, priority):
+        ...
+        
+    @classmethod
+    def get_by_energy(cls, energy):
+        ...
+        
+    @classmethod
+    def get_by_project(cls, priority):
+        ...
+        
+    @classmethod
+    def all(cls):
+        ...
 
 
 class Note:
@@ -178,6 +215,29 @@ class Note:
     def set_author(self, author):
         """Modifie l'auteur de la note."""
         self.__author = author
+        
+    def save(self):
+        ...
+        
+    @classmethod
+    def search_in_title(cls, search):
+        ...
+        
+    @classmethod
+    def search_in_title_and_content(cls, search):
+        ...
+        
+    @classmethod
+    def get_by_project(cls, project):
+        ...
+        
+    @classmethod
+    def get_by_task(cls, task):
+        ...
+        
+    @classmethod
+    def get_by_user(cls, user):
+        ...
         
         
 class Document:
@@ -270,6 +330,22 @@ class Document:
         :type is_draft: bool
         """
         self.__is_draft = is_draft
+        
+        
+     def save(self):
+        ...
+       
+     @classmethod
+     def get_by_owner(cls, owner):
+        ...
+        
+    @classmethod
+    def get_by_project(cls, project):
+        ...
+        
+    @classmethod
+    def get_by_task(cls, task):
+        ...
 
 
 
