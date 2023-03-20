@@ -1,26 +1,41 @@
 class User:
+    """Représente un utilisateur d'une application.
+
+    Attributes:
+        name (str): Le nom de l'utilisateur.
+        email (str): L'adresse e-mail de l'utilisateur.
+        password (str): Le mot de passe de l'utilisateur.
+    """
+
     def __init__(self, name, email, password):
         self.__name = name   # attribut privé
         self.__email = email   # attribut privé
         self.__password = password   # attribut privé
 
-    def get_name(self):   # méthode d'instance publique
+    def get_name(self):
+        """Retourne le nom de l'utilisateur."""
         return self.__name
 
-    def set_name(self, name):   # méthode d'instance publique
+    def set_name(self, name):
+        """Modifie le nom de l'utilisateur."""
         self.__name = name
 
-    def get_email(self):   # méthode d'instance publique
+    def get_email(self):
+        """Retourne l'adresse e-mail de l'utilisateur."""
         return self.__email
 
-    def set_email(self, email):   # méthode d'instance publique
+    def set_email(self, email):
+        """Modifie l'adresse e-mail de l'utilisateur."""
         self.__email = email
 
-    def get_password(self):   # méthode d'instance publique
+    def get_password(self):
+        """Retourne le mot de passe de l'utilisateur."""
         return self.__password
 
-    def set_password(self, password):   # méthode d'instance publique
+    def set_password(self, password):
+        """Modifie le mot de passe de l'utilisateur."""
         self.__password = password
+
 
 
 class Task:
