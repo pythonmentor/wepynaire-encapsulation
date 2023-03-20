@@ -164,6 +164,99 @@ class Note:
     def set_author(self, author):
         """Modifie l'auteur de la note."""
         self.__author = author
+        
+        
+class Document:
+    def __init__(self, owner, file_type, added_date, is_draft=True):
+        """
+        Constructeur de la classe Document.
+
+        :param owner: Le propriétaire du document.
+        :type owner: str
+        :param file_type: Le type de fichier du document.
+        :type file_type: str
+        :param added_date: La date à laquelle le document a été ajouté.
+        :type added_date: datetime.date
+        :param is_draft: Le statut de brouillon du document (par défaut True).
+        :type is_draft: bool
+        """
+        self.__owner = owner   # attribut privé
+        self.__file_type = file_type   # attribut privé
+        self.__added_date = added_date   # attribut privé
+        self.__is_draft = is_draft   # attribut privé
+
+    def get_owner(self):
+        """
+        Retourne le propriétaire du document.
+
+        :return: Le propriétaire du document.
+        :rtype: str
+        """
+        return self.__owner
+
+    def set_owner(self, owner):
+        """
+        Modifie le propriétaire du document.
+
+        :param owner: Le nouveau propriétaire du document.
+        :type owner: str
+        """
+        self.__owner = owner
+
+    def get_file_type(self):
+        """
+        Retourne le type de fichier du document.
+
+        :return: Le type de fichier du document.
+        :rtype: str
+        """
+        return self.__file_type
+
+    def set_file_type(self, file_type):
+        """
+        Modifie le type de fichier du document.
+
+        :param file_type: Le nouveau type de fichier du document.
+        :type file_type: str
+        """
+        self.__file_type = file_type
+
+    def get_added_date(self):
+        """
+        Retourne la date à laquelle le document a été ajouté.
+
+        :return: La date à laquelle le document a été ajouté.
+        :rtype: datetime.date
+        """
+        return self.__added_date
+
+    def set_added_date(self, added_date):
+        """
+        Modifie la date à laquelle le document a été ajouté.
+
+        :param added_date: La nouvelle date à laquelle le document a été ajouté.
+        :type added_date: datetime.date
+        """
+        self.__added_date = added_date
+
+    def is_draft(self):
+        """
+        Retourne le statut de brouillon du document.
+
+        :return: Le statut de brouillon du document.
+        :rtype: bool
+        """
+        return self.__is_draft
+
+    def set_draft(self, is_draft):
+        """
+        Modifie le statut de brouillon du document.
+
+        :param is_draft: Le nouveau statut de brouillon du document.
+        :type is_draft: bool
+        """
+        self.__is_draft = is_draft
+
 
 
 class Project:
@@ -174,6 +267,7 @@ class Project:
         tasks (list): La liste des tâches du projet.
         notes (list): La liste des notes du projet.
         users (list): La liste des utilisateurs associés au projet.
+        documents (list) la liste des documents associéts au projet.
     """
 
     def __init__(self, name):
@@ -181,6 +275,7 @@ class Project:
         self.__tasks = []   # attribut privé
         self.__notes = []   # attribut privé
         self.__users = []   # attribut privé
+        self.__documents = []   # nouvel attribut privé
 
     def add_task(self, task):
         """Ajoute une tâche à la liste des tâches du projet."""
@@ -205,6 +300,18 @@ class Project:
     def get_notes(self):
         """Retourne la liste des notes du projet."""
         return self.__notes
+    
+    def add_document(self, document):  
+        """Ajoute un document au projet."""
+        self.__documents.append(document)
+
+    def remove_document(self, document):  
+        """Supprime un document du projet."""
+        self.__documents.remove(document)
+
+    def get_documents(self):
+        """Retourne une liste de documents."""
+        return self.__documents
 
     def generate_report(self):
         """Génère un rapport pour le projet en affichant les tâches et les notes."""
